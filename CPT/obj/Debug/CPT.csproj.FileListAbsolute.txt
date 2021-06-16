@@ -1,0 +1,15 @@
+C:\Users\joshp\source\repos\CPT\CPT\bin\Debug\CPT.exe.config
+C:\Users\joshp\source\repos\CPT\CPT\bin\Debug\CPT.exe
+C:\Users\joshp\source\repos\CPT\CPT\bin\Debug\CPT.pdb
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.csprojAssemblyReference.cache
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\MainWindow.g.cs
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\App.g.cs
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT_MarkupCompile.cache
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT_MarkupCompile.lref
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\MainWindow.baml
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.g.resources
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.Properties.Resources.resources
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.csproj.GenerateResource.cache
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.csproj.CoreCompileInputs.cache
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.exe
+C:\Users\joshp\source\repos\CPT\CPT\obj\Debug\CPT.pdb

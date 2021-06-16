@@ -1,0 +1,43 @@
+﻿<Window x:Class="CPT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CPT"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="386" Width="800" ResizeMode="NoResize" WindowStyle="None">
+    <Grid>
+        <Rectangle Fill="#FF1B2838" HorizontalAlignment="Left" Height="386" VerticalAlignment="Top" Width="800" MouseDown="Rectangle_MouseDown"/>
+        <Label Content="Steam Hardware &amp; Software Survey:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="188" Margin="16,165,0,0" VerticalAlignment="Top" Width="306" Opacity="0.5"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="27" Margin="16,137,0,0" VerticalAlignment="Top" Width="306" Opacity="0.4"/>
+        <Label Content="PC VIDEO CARD USAGE" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="10"/>
+        <Label x:Name="GPU_More_Info" Content="CLICK FOR MORE INFO" HorizontalAlignment="Left" Margin="107,333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="9.8" Foreground="#FF63BAEC" MouseLeave="GPU_More_Info_MouseLeave" MouseEnter="GPU_More_Info_MouseEnter" MouseLeftButtonDown="GPU_More_Info_MouseLeftButtonDown" MouseLeftButtonUp="GPU_More_Info_MouseLeftButtonUp"/>
+        <Label x:Name="Clicked" Content="Clicked" HorizontalAlignment="Left" Margin="657,327,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="188" Margin="333,165,0,0" VerticalAlignment="Top" Width="306" Opacity="0.5"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="27" Margin="333,137,0,0" VerticalAlignment="Top" Width="306" Opacity="0.4"/>
+        <Label Content="PC PROCESSOR USAGE" HorizontalAlignment="Left" Margin="337,141,0,0" VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="10"/>
+        <Label x:Name="CPU_More_Info" Content="CLICK FOR MORE INFO" HorizontalAlignment="Left" Margin="423,333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="9.8" Foreground="#FF63BAEC" MouseEnter="CPU_More_Info_MouseEnter" MouseLeave="CPU_More_Info_MouseLeave" MouseLeftButtonDown="CPU_More_Info_MouseLeftButtonDown" MouseLeftButtonUp="CPU_More_Info_MouseLeftButtonUp"/>
+        <TextBlock HorizontalAlignment="Left" Margin="15,79,0,0" TextWrapping="Wrap" Text="Steam conducts a monthly survey to collect data about what kinds of computer hardware and software our customers are using. Participation in the survey is optional, and anonymous. The information gathered is incredibly helpful to us as we make decisions about what kinds of technology investments to make and products to offer. " VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="14" Width="761"/>
+        <Label x:Name="Close" Content=" X" HorizontalAlignment="Center" Margin="775,0,0,363" VerticalAlignment="Center" FontFamily="Arial" Background="{x:Null}" Foreground="White" Width="25" Height="23" MouseEnter="Close_MouseEnter" MouseLeave="Close_MouseLeave" MouseLeftButtonDown="Close_MouseLeftButtonDown"/>
+        <Label x:Name="Min" Content=" _" HorizontalAlignment="Center" Margin="750,0,25,363" VerticalAlignment="Center" FontFamily="Arial" Background="{x:Null}" Foreground="White" Width="25" Height="23" MouseEnter="Min_MouseEnter" MouseLeave="Min_MouseLeave" MouseDown="Min_MouseDown"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Steam" VerticalAlignment="Top" Width="690" TextAlignment="Center" Foreground="White" FontSize="16" Height="23" Margin="55,3,0,0" MouseDown="TextBlock_MouseDown"/>
+        <Image HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="31" Source="Steem.png" Margin="0,5,0,0"/>
+        <Grid x:Name="GPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838">
+            <Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
+            <Button x:Name="Load_table" Content="Load" HorizontalAlignment="Left" Margin="333,322,0,0" VerticalAlignment="Top" Width="75" Click="Load_table_Click"/>
+            <ScrollViewer HorizontalAlignment="Left" Height="282" Margin="10,35,0,0" VerticalAlignment="Top" Width="780">
+                <StackPanel x:Name="StackColumn" Height="523">
+                    <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
+                            <Label Foreground="White" Content="Ranking" />
+                        </Grid>
+                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150">
+                            <Label Foreground="White" Content="Name"/>
+                        </Grid>
+                    </StackPanel-->
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
