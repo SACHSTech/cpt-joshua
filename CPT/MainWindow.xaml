@@ -26,8 +26,8 @@
         <Grid x:Name="GPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838">
             <Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
             <Button x:Name="Load_table" Content="Load" HorizontalAlignment="Left" Margin="333,322,0,0" VerticalAlignment="Top" Width="75" Click="Load_table_Click"/>
-            <ScrollViewer HorizontalAlignment="Left" Height="282" Margin="10,35,0,0" VerticalAlignment="Top" Width="780">
-                <StackPanel x:Name="StackColumn" Height="3200">
+            <ScrollViewer HorizontalAlignment="Left" Height="282" Margin="110,35,0,0" VerticalAlignment="Top" Width="580">
+                <StackPanel x:Name="StackColumn" Height="282">
                     <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
                         <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
                             <Label Foreground="White" Content="Ranking" />
