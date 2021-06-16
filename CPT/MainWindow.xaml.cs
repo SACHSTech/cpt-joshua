@@ -122,52 +122,100 @@ namespace CPT
             GPU_More_Info_Grid.Visibility = Visibility.Hidden;
         }
 
+        // It just works ¯\_(ツ)_/¯
+        // https://www.youtube.com/watch?v=YPN0qhSyWy8 
+        #region Table Maker
         private void Load_table_Click(object sender, RoutedEventArgs e)
         {
             Dataset ds = new Dataset();
             StackPanel StackColumn = this.StackColumn;
-            //StackColumn.Children.Add();
-            for(int i=0;i<ds.getGPUSize();i++)
+            StackPanel Row;
+
+            Row = addRow();
+
+            Row.Children.Add(addColumn(55, " Ranking"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(220, " Name"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(55, " March %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(46, " April %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(44, " May %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(46, " June %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(42, " July %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(60, " August %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(50, " Change"));
+            Row.Children.Add(addVSpacer());
+
+            StackColumn.Children.Add(Row);
+            StackColumn.Children.Add(addHSpacer());
+
+            for (int i=0;i<ds.getGPUSize();i++)
             {
-                StackPanel Row = new StackPanel();
-                Grid grid;
-                TextBlock label;
+                Row = addRow();
 
-                Row.Height = 30;
-                Row.Width = 760;
-                Row.HorizontalAlignment = HorizontalAlignment.Left;
-                Row.VerticalAlignment = VerticalAlignment.Top;
-                Row.Orientation = Orientation.Horizontal;
-
-                grid = new Grid();
-                label = new TextBlock();
-
-                grid.Height = 30;
-                grid.HorizontalAlignment = HorizontalAlignment.Left;
-                grid.VerticalAlignment = VerticalAlignment.Top;
-                grid.Width = 55;
-                label.Text = "1";
-                label.TextAlignment = TextAlignment.Center;
-                label.Foreground = Brushes.White;
-                grid.Children.Add(label);
-                Row.Children.Add(grid);
-
-                grid = new Grid();
-                label = new TextBlock();
-                grid.Height = 30;
-                grid.HorizontalAlignment = HorizontalAlignment.Left;
-                grid.VerticalAlignment = VerticalAlignment.Top;
-                grid.Width = 150;
-                label.Text = "1";
-                label.TextAlignment = TextAlignment.Center;
-                label.Foreground = Brushes.White;
-                grid.Children.Add(label);
-                Row.Children.Add(grid);
-
+                Row.Children.Add(addColumn(55, " "+ds.getGPU(i).getRanking()));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(220, " "+ds.getGPU(i).getName()));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(55, " "+ds.getGPU(i).getMarPercent()));
+                Row.Children.Add(addVSpacer());
 
                 StackColumn.Children.Add(Row);
+                StackColumn.Children.Add(addHSpacer());
             }
             this.StackColumn = StackColumn;
         }
+        private Grid addColumn(int Width, String Text)
+        {
+            Grid grid = new Grid();
+            TextBlock label = new TextBlock();
+            grid.Height = 30;
+            grid.HorizontalAlignment = HorizontalAlignment.Left;
+            grid.VerticalAlignment = VerticalAlignment.Top;
+            grid.Width = Width;
+            label.Text = Text;
+            label.TextAlignment = TextAlignment.Left;
+            label.VerticalAlignment = VerticalAlignment.Center;
+            label.Foreground = Brushes.White;
+            grid.Children.Add(label);
+            return grid;
+        }
+        private StackPanel addRow()
+        {
+            StackPanel Row = new StackPanel();
+            Row.Height = 30;
+            Row.Width = 760;
+            Row.HorizontalAlignment = HorizontalAlignment.Left;
+            Row.VerticalAlignment = VerticalAlignment.Top;
+            Row.Orientation = Orientation.Horizontal;
+            return Row;
+        }
+        private Rectangle addHSpacer()
+        {
+            Rectangle rect = new Rectangle();
+            rect.Height = 1;
+            rect.Width = 780;
+            rect.Fill = Brushes.White;
+            rect.HorizontalAlignment = HorizontalAlignment.Center;
+            rect.VerticalAlignment = VerticalAlignment.Center;
+            return rect;
+        }
+        private Rectangle addVSpacer()
+        {
+            Rectangle rect = new Rectangle();
+            rect.Height = 30;
+            rect.Width = 1;
+            rect.Fill = Brushes.White;
+            rect.HorizontalAlignment = HorizontalAlignment.Center;
+            rect.VerticalAlignment = VerticalAlignment.Center;
+            return rect;
+        }
+        #endregion Table Maker
     }
 }

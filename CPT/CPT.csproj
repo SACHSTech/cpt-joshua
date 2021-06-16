@@ -97,12 +97,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="external-content.duckduckgo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="external-content.duckduckgo.com.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Steem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

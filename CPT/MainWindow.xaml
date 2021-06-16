@@ -27,8 +27,17 @@
             <Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
             <Button x:Name="Load_table" Content="Load" HorizontalAlignment="Left" Margin="333,322,0,0" VerticalAlignment="Top" Width="75" Click="Load_table_Click"/>
             <ScrollViewer HorizontalAlignment="Left" Height="282" Margin="10,35,0,0" VerticalAlignment="Top" Width="780">
-                <StackPanel x:Name="StackColumn" Height="523">
+                <StackPanel x:Name="StackColumn" Height="3200">
                     <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
+                            <Label Foreground="White" Content="Ranking" />
+                        </Grid>
+                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150">
+                            <Label Foreground="White" Content="Name"/>
+                        </Grid>
+                    </>
+                    <Rectangle Fill="#FFF4F4F5" Height="1" Width="780"/>
+                    <StackPanel Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
                         <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
                             <Label Foreground="White" Content="Ranking" />
                         </Grid>
