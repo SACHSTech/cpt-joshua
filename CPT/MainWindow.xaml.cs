@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -11,9 +12,11 @@ namespace CPT
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dataset ds;
         public MainWindow()
         {
             InitializeComponent();
+            ds = new Dataset();
         }
         SolidColorBrush moreInf = new SolidColorBrush(Color.FromRgb(99, 186, 236));
         SolidColorBrush buttonHighlight = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0));
@@ -39,6 +42,11 @@ namespace CPT
             if(clickHold)
             {
                 GPU_More_Info_Grid.Visibility = Visibility.Visible;
+                if(this.StackColumn.Height <= 282)
+                {
+                    Table tb = new Table(580, 3075, 1);
+                    this.StackColumn = tb.loadTable(this.StackColumn, ds);
+                }
             }       
         }
 
@@ -111,8 +119,16 @@ namespace CPT
 
         private void Load_table_Click(object sender, RoutedEventArgs e)
         {
+            ds = new Dataset();
             Table tb = new Table(580, 3075, 1);
-            this.StackColumn = tb.loadTable(this.StackColumn);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void Sort_MarPrc_Click(object sender, RoutedEventArgs e)
+        {
+            ds.sortGPU();
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
     }
 }

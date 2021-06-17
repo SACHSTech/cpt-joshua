@@ -41,5 +41,43 @@ namespace CPT
             return gpus.Count;
         }
         // add sorter
+        public void sortGPU()
+        {
+            Quicksort(gpus, 0, getGPUSize()-1);
+        }
+        private int partition(List<GPU> data, int f, int datasetSize)
+        {
+            double pivot = data[datasetSize].getMarPercent();
+
+            int P_index = f;
+            int i;
+            GPU t;
+
+            for (i = f; i < datasetSize; i++)
+            {
+                if (data[i].getMarPercent() <= pivot)
+                {
+                    t = data[i];
+                    data[i] = data[P_index];
+                    data[P_index] = t;
+                    P_index++;
+                }
+            }
+
+            t = data[datasetSize];
+            data[datasetSize] = data[P_index];
+            data[P_index] = t;
+
+            return P_index;
+        }
+        private void Quicksort(List<GPU> data, int f, int datasetSize)
+        {
+            if (f < datasetSize)
+            {
+                int P_index = partition(data, f, datasetSize);
+                Quicksort(data, f, P_index - 1);
+                Quicksort(data, P_index + 1, datasetSize);
+            }
+        }
     }
 }

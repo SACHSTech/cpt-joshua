@@ -12,7 +12,7 @@ namespace CPT
 {
     /// <summary>
     /// It just works ¯\_(ツ)_/¯
-    /// https://www.youtube.com/watch?v=YPN0qhSyWy8 
+    /// https://www.youtube.com/watch?v=YPN0qhSyWy8&t=67s
     /// </summary>
     class Table
     {
@@ -23,12 +23,12 @@ namespace CPT
             this.height = height;
             this.thinkness = thinkness;
         }
-        public StackPanel loadTable(StackPanel stackPanel)
+        public StackPanel loadTable(StackPanel stackPanel, Dataset ds)
         {
-            Dataset ds = new Dataset();
             StackPanel StackColumn = stackPanel;
             StackColumn.Height = height;
             StackColumn.Width = width;
+            StackColumn.Children.Clear();
             StackPanel Row;
 
             Row = addRow();
