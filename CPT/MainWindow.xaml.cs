@@ -126,7 +126,16 @@ namespace CPT
 
         private void Sort_MarPrc_Click(object sender, RoutedEventArgs e)
         {
-            ds.sortGPU();
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count-1, "getMarPercent");
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void names_Click(object sender, RoutedEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortStrings(ds.gpus, 0, ds.gpus.Count-1, "getMarPercent");
             Table tb = new Table(580, 3075, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }

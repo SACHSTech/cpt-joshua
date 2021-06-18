@@ -48,6 +48,7 @@
                 </StackPanel>
             </ScrollViewer>
             <Button x:Name="Sort_MarPrc" Content="Sort by March%" HorizontalAlignment="Left" Margin="190,322,0,0" VerticalAlignment="Top" Width="100" Click="Sort_MarPrc_Click"/>
+            <Button x:Name="names" Content="Sort by name%" HorizontalAlignment="Left" Margin="295,322,0,0" VerticalAlignment="Top" Width="113" Click="names_Click"/>
         </Grid>
     </Grid>
 </Window>

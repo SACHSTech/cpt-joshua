@@ -9,7 +9,7 @@ namespace CPT
     public class GPU
     {
         private int ranking;
-        private String name, change;
+        private string name, change;
         private double marPercent, aprPercent, mayPercent, junPercent, julPercent;
         public GPU(int ranking, string name, double marPercent, double aprPercent, double mayPercent, double junPercent, double julPercent, string change)
         {
@@ -26,7 +26,7 @@ namespace CPT
         {
             return ranking;
         }
-        public String getName()
+        public string getName()
         {
             return name;
         }
@@ -50,9 +50,22 @@ namespace CPT
         {
             return julPercent;
         }
-        public String getChange()
+        
+        public string getChange()
         {
             return change;
+        }
+
+        public double getValue(string funcName)
+        {
+            switch (funcName)
+            {
+                case "getMarPercent": return getMarPercent();
+                case "getAprPercent": return getAprPercent();
+                case "getMayPercent": return getMayPercent();
+                case "getJunPercent": return getJulPercent();
+                default: return 0.00;
+            }         
         }
         public String toString()
         {
