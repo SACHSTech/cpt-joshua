@@ -25,7 +25,6 @@
         <Image HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="31" Source="Steem.png" Margin="0,5,0,0"/>
         <Grid x:Name="GPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838">
             <Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
-            <Button x:Name="Load_table" Content="Reset" HorizontalAlignment="Left" Margin="110,322,0,0" VerticalAlignment="Top" Width="75" Click="Load_table_Click"/>
             <ScrollViewer HorizontalAlignment="Left" Height="282" Margin="110,35,0,0" VerticalAlignment="Top" Width="580">
                 <StackPanel x:Name="StackColumn" Height="282">
                     <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
@@ -47,8 +46,12 @@
                     </StackPanel-->
                 </StackPanel>
             </ScrollViewer>
-            <Button x:Name="Sort_MarPrc" Content="Sort by March%" HorizontalAlignment="Left" Margin="190,322,0,0" VerticalAlignment="Top" Width="100" Click="Sort_MarPrc_Click"/>
-            <Button x:Name="names" Content="Sort by name%" HorizontalAlignment="Left" Margin="295,322,0,0" VerticalAlignment="Top" Width="113" Click="names_Click"/>
+            <TextBlock x:Name="Load_Table" HorizontalAlignment="Left" Margin="114,322,0,0" TextWrapping="Wrap" Text="Ranking" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Load_Table_MouseEnter" MouseLeave="Load_Table_MouseLeave" MouseLeftButtonDown="Load_Table_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Load_Table_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="114,341,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden"/>
+            <Rectangle x:Name="Sort_Name_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="240,341,0,0" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_Name" HorizontalAlignment="Left" Margin="240,322,0,0" TextWrapping="Wrap" Text="Sort By Name" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Name_MouseEnter" MouseLeave="Sort_Name_MouseLeave" MouseLeftButtonDown="Sort_Name_MouseLeftButtonDown"/>
+            <TextBlock x:Name="Sort_March" HorizontalAlignment="Left" Margin="327,322,0,0" TextWrapping="Wrap" Text="Sort March %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_March_MouseEnter" MouseLeave="Sort_March_MouseLeave" MouseLeftButtonDown="Sort_March_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_March_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="327,341,0,0" VerticalAlignment="Top" Width="71" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

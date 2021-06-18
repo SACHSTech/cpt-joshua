@@ -117,25 +117,55 @@ namespace CPT
             GPU_More_Info_Grid.Visibility = Visibility.Hidden;
         }
 
-        private void Load_table_Click(object sender, RoutedEventArgs e)
+        private void Load_Table_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Load_Table_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Load_Table_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Load_Table_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_Name_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_Name_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_Name_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_Name_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_March_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_March_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_March_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_March_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_Name_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortStrings(ds.gpus, 0, ds.gpus.Count - 1, "");
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void Sort_March_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMarPercent");
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void Load_Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ds = new Dataset();
-            Table tb = new Table(580, 3075, 1);
-            this.StackColumn = tb.loadTable(this.StackColumn, ds);
-        }
-
-        private void Sort_MarPrc_Click(object sender, RoutedEventArgs e)
-        {
-            Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count-1, "getMarPercent");
-            Table tb = new Table(580, 3075, 1);
-            this.StackColumn = tb.loadTable(this.StackColumn, ds);
-        }
-
-        private void names_Click(object sender, RoutedEventArgs e)
-        {
-            Sort sort = new Sort();
-            sort.SortStrings(ds.gpus, 0, ds.gpus.Count-1, "getMarPercent");
             Table tb = new Table(580, 3075, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
