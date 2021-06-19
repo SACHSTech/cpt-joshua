@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Graph.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="Table.cs" />
     <Page Include="MainWindow.xaml">

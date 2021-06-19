@@ -169,5 +169,34 @@ namespace CPT
             Table tb = new Table(580, 3075, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
+
+        private void Sort_April_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_April_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_April_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_April_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_April_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getAprPercent");
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void Load_Test_Click(object sender, RoutedEventArgs e)
+        {
+            Graph gr = new Graph(241, 134, 1, false);
+            this.GPU_Graph = gr.DrawGraph(this.GPU_Graph, ds);
+            
+            gr.AddBar(16.18, 30, new SolidColorBrush(Color.FromRgb(0xD4, 0x6C, 0x4E)), 30, "AMD", 12, 1.5, -5);
+            gr.AddBar(75.63, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 80, "Nvidia", 12, -2, -5);
+            gr.AddBar(8.08, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 130, "Intel", 12, 4, -5);
+            gr.AddBar(0.11, 30, new SolidColorBrush(Color.FromRgb(0xF9, 0xE0, 0x7F)), 180, "Other", 12, 0, -5);
+        }
     }
 }
