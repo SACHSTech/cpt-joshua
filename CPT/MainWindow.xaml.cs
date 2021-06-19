@@ -187,16 +187,57 @@ namespace CPT
             Table tb = new Table(580, 3075, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
-
-        private void Load_Test_Click(object sender, RoutedEventArgs e)
+        private void GPU_Graph_Loaded(object sender, RoutedEventArgs e)
         {
             Graph gr = new Graph(241, 134, 1, false);
             this.GPU_Graph = gr.DrawGraph(this.GPU_Graph, ds);
-            
-            gr.AddBar(16.18, 30, new SolidColorBrush(Color.FromRgb(0xD4, 0x6C, 0x4E)), 30, "AMD", 12, 1.5, -5);
-            gr.AddBar(75.63, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 80, "Nvidia", 12, -2, -5);
-            gr.AddBar(8.08, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 130, "Intel", 12, 4, -5);
-            gr.AddBar(0.11, 30, new SolidColorBrush(Color.FromRgb(0xF9, 0xE0, 0x7F)), 180, "Other", 12, 0, -5);
+
+            double nvidiaPercent = 0.00, amdPercent = 0.00, intelPercent = 0.00, otherPercent = 0.00;
+
+            foreach (GPU gpu in ds.gpus)
+            {
+                string gpuMfg = gpu.getName().Substring(0, 3);
+                switch (gpuMfg)
+                {
+                    case "NVI":
+                        nvidiaPercent += gpu.getJulPercent();
+                        break;
+                    case "AMD":
+                        amdPercent += gpu.getJulPercent();
+                        break;
+                    case "Int":
+                        intelPercent += gpu.getJulPercent();
+                        break;
+                    case "Oth":
+                        otherPercent += gpu.getJulPercent();
+                        break;
+                }
+            }
+
+            /*for(int i = 0; i < ds.gpus.Count; i++)
+            {
+                string gpuMfg = ds.getGPU(i).getName().Substring(0, 3);
+                switch (gpuMfg)
+                {
+                    case "NVI":
+                        nvidiaPercent += ds.getGPU(i).getJulPercent();
+                        break;
+                    case "AMD":
+                        amdPercent += ds.getGPU(i).getJulPercent();
+                        break;
+                    case "Int":
+                        intelPercent += ds.getGPU(i).getJulPercent();
+                        break;
+                    case "Oth":
+                        otherPercent += ds.getGPU(i).getJulPercent();
+                        break;
+                }
+            }*/
+
+            gr.AddBar(otherPercent, 30, new SolidColorBrush(Color.FromRgb(0xF9, 0xE0, 0x7F)), 20, "Other", 12, 0, -5);
+            gr.AddBar(nvidiaPercent, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 70, "Nvidia", 12, -2, -5);
+            gr.AddBar(intelPercent, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 120, "Intel", 12, 4, -5);
+            gr.AddBar(amdPercent, 30, new SolidColorBrush(Color.FromRgb(0xD4, 0x6C, 0x4E)), 170, "AMD", 12, 1.5, -5);
         }
     }
 }

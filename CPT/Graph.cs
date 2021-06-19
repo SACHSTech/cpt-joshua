@@ -47,7 +47,7 @@ namespace CPT
             }
 
             rect = new Rectangle();
-            rect.Width = width - 10;
+            rect.Width = width;
             rect.HorizontalAlignment = HorizontalAlignment.Right;
             rect.VerticalAlignment = VerticalAlignment.Bottom;
             rect.Margin = new Thickness(0, 0, 0, 10);
@@ -59,7 +59,8 @@ namespace CPT
             rect.Width = thickness;
             rect.HorizontalAlignment = HorizontalAlignment.Left;
             rect.VerticalAlignment = VerticalAlignment.Top;
-            rect.Margin = new Thickness(10, 0, 0, 0);
+            // rect.Margin = new Thickness(10, 0, 0, 0);
+            rect.Margin = new Thickness(0, 0, 0, 0);
             rect.Height = height-10;
             rect.Fill = Brushes.White;
             graph.Children.Add(rect);
@@ -86,7 +87,7 @@ namespace CPT
             text.Foreground = barColor;
             graph.Children.Add(text);
 
-            text = new TextBlock();
+            /*text = new TextBlock();
             text.Text = value+"%";
             text.FontSize = fontSize/1.3;
             text.HorizontalAlignment = HorizontalAlignment.Left;
@@ -94,7 +95,17 @@ namespace CPT
             text.VerticalAlignment = VerticalAlignment.Bottom;
             text.Foreground = barColor;
             text.Margin = new Thickness(-(10 + thickness + (text.Text.Length*fontSize/5)), 0, 0, value + thickness + fontSize / 1.3);
-            graph.Children.Add(text);   
+            graph.Children.Add(text);*/
+
+            text = new TextBlock();
+            text.Text = value+"%";
+            text.FontSize = fontSize/1.3;
+            text.HorizontalAlignment = HorizontalAlignment.Left;
+            text.TextAlignment = TextAlignment.Center;
+            text.VerticalAlignment = VerticalAlignment.Bottom;
+            text.Foreground = barColor;
+            text.Margin = new Thickness(barPosition + thickness + fontXDisplacement, 0, 0, value + fontSize + thickness);
+            graph.Children.Add(text);
         }
     }
 }
