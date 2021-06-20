@@ -63,7 +63,9 @@ namespace CPT
                 case "getMarPercent": return getMarPercent();
                 case "getAprPercent": return getAprPercent();
                 case "getMayPercent": return getMayPercent();
-                case "getJunPercent": return getJulPercent();
+                case "getJunPercent": return getJunPercent();
+                case "getJulPercent": return getJulPercent();
+                case "getChange": return Convert.ToDouble(getChange());
                 default: return 0.00;
             }         
         }

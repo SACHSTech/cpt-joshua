@@ -20,9 +20,10 @@ namespace CPT
             InitializeComponent();
             ds = new Dataset();
         }
-        SolidColorBrush moreInf = new SolidColorBrush(Color.FromRgb(99, 186, 236));
-        SolidColorBrush buttonHighlight = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0));
-        bool clickHold = false;
+        private SolidColorBrush moreInf = new SolidColorBrush(Color.FromRgb(99, 186, 236));
+        private SolidColorBrush buttonHighlight = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0));
+        private bool clickHold = false;
+        private double removed = 0;
         private void GPU_More_Info_MouseEnter(object sender, MouseEventArgs e)
         {
             GPU_More_Info.Foreground = Brushes.White;
@@ -159,7 +160,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortStrings(ds.gpus, 0, ds.gpus.Count - 1, "");
-            Table tb = new Table(580, 3075, 1);
+            Table tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -167,7 +168,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMarPercent");
-            Table tb = new Table(580, 3075, 1);
+            Table tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -192,7 +193,74 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getAprPercent");
-            Table tb = new Table(580, 3075, 1);
+            Table tb = new Table(580, 3075 - removed, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+        private void Sort_May_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_May_Highlight.Visibility = Visibility.Visible;
+        }
+        private void Sort_May_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_May_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_May_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMayPercent");
+            Table tb = new Table(580, 3075 - removed, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+        private void Sort_June_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_June_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_June_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_June_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_June_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJunPercent");
+            Table tb = new Table(580, 3075 - removed, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+        private void Sort_July_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_July_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_July_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_July_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_July_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJulPercent");
+            Table tb = new Table(580, 3075 - removed, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+        private void Sort_Change_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Sort_Change_Highlight.Visibility = Visibility.Visible;
+        }
+
+        private void Sort_Change_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Sort_Change_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private void Sort_Change_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getChange");
+            Table tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void GPU_Graph_Loaded(object sender, RoutedEventArgs e)
@@ -294,7 +362,7 @@ namespace CPT
 
         private async void Search_bar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double removed = 0;
+            removed = 0;
             if (Search_bar.Text != "")
             {
                 ds = new Dataset();

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CPT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="386" Width="800" ResizeMode="NoResize" WindowStyle="None">
+        Title="MainWindow" Height="386" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle Fill="#FF1B2838" HorizontalAlignment="Left" Height="386" VerticalAlignment="Top" Width="800" MouseDown="Rectangle_MouseDown"/>
         <Label Content="Steam Hardware &amp; Software Survey:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24"/>
@@ -37,6 +37,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <Rectangle x:Name="Back_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="18,28,764,0" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+            <TextBox x:Name="Search_bar" HorizontalAlignment="Left" Height="23" Margin="110,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="Search_bar_TextChanged"/>
             <ScrollViewer HorizontalAlignment="Left" Height="267" Margin="110,50,0,0" VerticalAlignment="Top" Width="580">
                 <StackPanel x:Name="StackColumn" Height="282">
                     <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
@@ -66,7 +67,14 @@
             <Rectangle x:Name="Sort_March_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="397,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
             <TextBlock x:Name="Sort_April" HorizontalAlignment="Left" Margin="449,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_April_MouseEnter" MouseLeave="Sort_April_MouseLeave" MouseLeftButtonDown="Sort_April_MouseLeftButtonDown"/>
             <Rectangle x:Name="Sort_April_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="449,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
-            <TextBox x:Name="Search_bar" HorizontalAlignment="Left" Height="23" Margin="110,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="Search_bar_TextChanged"/>
+            <TextBlock x:Name="Sort_May" HorizontalAlignment="Left" Margin="495,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_May_MouseEnter" MouseLeave="Sort_May_MouseLeave" MouseLeftButtonDown="Sort_May_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_May_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="495,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_June" HorizontalAlignment="Left" Margin="540,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_June_MouseEnter" MouseLeave="Sort_June_MouseLeave" MouseLeftButtonDown="Sort_June_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_June_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="540,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_July" HorizontalAlignment="Left" Margin="585,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_July_MouseEnter" MouseLeave="Sort_July_MouseLeave" MouseLeftButtonDown="Sort_July_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_July_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="585,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_Change" HorizontalAlignment="Left" Margin="632,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Change_MouseEnter" MouseLeave="Sort_Change_MouseLeave" MouseLeftButtonDown="Sort_Change_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_Change_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="632,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>
