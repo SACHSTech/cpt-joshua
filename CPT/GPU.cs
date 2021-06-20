@@ -60,6 +60,7 @@ namespace CPT
         {
             switch (funcName)
             {
+                case "getRanking": return Convert.ToDouble(getRanking());
                 case "getMarPercent": return getMarPercent();
                 case "getAprPercent": return getAprPercent();
                 case "getMayPercent": return getMayPercent();

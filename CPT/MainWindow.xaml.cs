@@ -174,8 +174,9 @@ namespace CPT
 
         private void Load_Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ds = new Dataset();
-            Table tb = new Table(580, 3075, 1);
+            Sort sort = new Sort();
+            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getRanking");
+            Table tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -257,7 +258,7 @@ namespace CPT
         }
 
         private void Sort_Change_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        {   
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getChange");
             Table tb = new Table(580, 3075 - removed, 1);
@@ -365,6 +366,7 @@ namespace CPT
             removed = 0;
             if (Search_bar.Text != "")
             {
+                Search_label.Visibility = Visibility.Hidden;
                 ds = new Dataset();
 
                 for (int t = 0; t < 10; t++)
@@ -381,6 +383,7 @@ namespace CPT
             }
             else
             {
+                Search_label.Visibility = Visibility.Visible;
                 ds = new Dataset();
             }
 
