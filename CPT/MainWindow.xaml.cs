@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System;
+using System.Timers;
 
 namespace CPT
 {
@@ -42,11 +44,6 @@ namespace CPT
             if(clickHold)
             {
                 GPU_More_Info_Grid.Visibility = Visibility.Visible;
-                if(this.StackColumn.Height <= 282)
-                {
-                    Table tb = new Table(580, 3075, 1);
-                    this.StackColumn = tb.loadTable(this.StackColumn, ds);
-                }
             }       
         }
 
@@ -127,13 +124,24 @@ namespace CPT
             Load_Table_Highlight.Visibility = Visibility.Hidden;
         }
 
-        private void Sort_Name_MouseEnter(object sender, MouseEventArgs e)
+        private async void Sort_Name_MouseEnter(object sender, MouseEventArgs e)
         {
+            Sort_Name_Highlight.Width = 0;
             Sort_Name_Highlight.Visibility = Visibility.Visible;
+            while(Sort_Name_Highlight.Width < 70)
+            {
+                Sort_Name_Highlight.Width += 10;
+                await Task.Delay(10);
+            }
         }
 
-        private void Sort_Name_MouseLeave(object sender, MouseEventArgs e)
+        private async void Sort_Name_MouseLeave(object sender, MouseEventArgs e)
         {
+            while (Sort_Name_Highlight.Width > 0)
+            {
+                Sort_Name_Highlight.Width -= 10;
+                await Task.Delay(10);
+            }
             Sort_Name_Highlight.Visibility = Visibility.Hidden;
         }
 
@@ -238,6 +246,77 @@ namespace CPT
             gr.AddBar(nvidiaPercent, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 70, "Nvidia", 12, -2, -5);
             gr.AddBar(intelPercent, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 120, "Intel", 12, 4, -5);
             gr.AddBar(amdPercent, 30, new SolidColorBrush(Color.FromRgb(0xD4, 0x6C, 0x4E)), 170, "AMD", 12, 1.5, -5);
+        }
+
+        private void GPU_More_Info_Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private async void Back_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Back_Highlight.Visibility = Visibility.Visible;
+            Back_Highlight.Width = 0;
+            Back_Highlight.Visibility = Visibility.Visible;
+            while (Back_Highlight.Width < 20)
+            {
+                Back_Highlight.Width += 4;
+                await Task.Delay(10);
+            }
+        }
+
+        private async void Back_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //Back_Highlight.Visibility = Visibility.Hidden;
+            while (Back_Highlight.Width > 0)
+            {
+                Back_Highlight.Width -= 4;
+                await Task.Delay(10);
+            }
+            Back_Highlight.Visibility = Visibility.Hidden;
+        }
+
+        private async void Back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            clickHold = true;
+            await Task.Delay(300);
+            clickHold = false;
+        }
+
+        private void Back_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (clickHold)
+            {
+                GPU_More_Info_Grid.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private async void Search_bar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Search_bar.Text != "")
+            {
+                ds = new Dataset();
+
+                for (int t = 0; t < 10; t++)
+                {
+                    for (int i = 0; i < ds.getGPUSize(); i++)
+                    {
+                        if (!ds.getGPU(i).getRanking().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getName().Contains(Search_bar.Text) && !ds.getGPU(i).getMarPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getAprPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getMayPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJunPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJulPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getChange().ToString().Contains(Search_bar.Text))
+                        {
+                            ds.removeGPU(ds.getGPU(i));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ds = new Dataset();
+            }
+
+            await Task.Delay(300);
+            Table tb = new Table(580, 3075, 1);
+            this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
     }
 }
