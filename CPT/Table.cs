@@ -16,8 +16,8 @@ namespace CPT
     /// </summary>
     class Table
     {
-        private int width, height, thinkness;
-        public Table(int width, int height, int thinkness)
+        private double width, height, thinkness;
+        public Table(double width, double height, double thinkness)
         {
             this.width = width;
             this.height = height;

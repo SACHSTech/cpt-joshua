@@ -294,6 +294,7 @@ namespace CPT
 
         private async void Search_bar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            double removed = 0;
             if (Search_bar.Text != "")
             {
                 ds = new Dataset();
@@ -302,9 +303,10 @@ namespace CPT
                 {
                     for (int i = 0; i < ds.getGPUSize(); i++)
                     {
-                        if (!ds.getGPU(i).getRanking().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getName().Contains(Search_bar.Text) && !ds.getGPU(i).getMarPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getAprPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getMayPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJunPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJulPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getChange().ToString().Contains(Search_bar.Text))
+                        if (!ds.getGPU(i).getRanking().ToString().Contains(Search_bar.Text) && ds.getGPU(i).getName().IndexOf(Search_bar.Text, 0, StringComparison.CurrentCultureIgnoreCase) == -1 && !ds.getGPU(i).getMarPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getAprPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getMayPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJunPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getJulPercent().ToString().Contains(Search_bar.Text) && !ds.getGPU(i).getChange().ToString().Contains(Search_bar.Text))
                         {
                             ds.removeGPU(ds.getGPU(i));
+                            removed+=30;
                         }
                     }
                 }
@@ -315,7 +317,7 @@ namespace CPT
             }
 
             await Task.Delay(300);
-            Table tb = new Table(580, 3075, 1);
+            Table tb = new Table(580, 3075-removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
     }
