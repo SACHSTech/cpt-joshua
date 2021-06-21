@@ -13,8 +13,12 @@ namespace CPT
         public Dataset()
         {
             gpus = new List<GPU>();
+        }
+        public void loadGPU()
+        {
+            gpus.Clear();
             string[] lines = File.ReadAllLines(@"..\..\csv\gpu.csv");
-            for(int i=1;i<lines.Length;i++)
+            for (int i = 1; i < lines.Length; i++)
             {
                 var split = ((lines[i].Replace("%", "")).Replace("-,", "0,")).Split(',');
                 gpus.Add(new GPU(Int32.Parse(split[0]), split[1], Convert.ToDouble(split[2]), Convert.ToDouble(split[3]), Convert.ToDouble(split[4]), Convert.ToDouble(split[5]), Convert.ToDouble(split[6]), split[7]));

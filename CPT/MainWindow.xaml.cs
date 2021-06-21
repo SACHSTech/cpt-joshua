@@ -14,11 +14,12 @@ namespace CPT
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Dataset ds;
+        private Dataset ds = new Dataset();
+        private Table tb;
         public MainWindow()
         {
             InitializeComponent();
-            ds = new Dataset();
+            ds.loadGPU();
         }
         private SolidColorBrush moreInf = new SolidColorBrush(Color.FromRgb(99, 186, 236));
         private SolidColorBrush buttonHighlight = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0));
@@ -160,7 +161,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortStrings(ds.gpus, 0, ds.gpus.Count - 1, "");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -168,7 +169,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMarPercent");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -176,7 +177,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getRanking");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -194,7 +195,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getAprPercent");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void Sort_May_MouseEnter(object sender, MouseEventArgs e)
@@ -210,7 +211,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMayPercent");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void Sort_June_MouseEnter(object sender, MouseEventArgs e)
@@ -227,7 +228,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJunPercent");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void Sort_July_MouseEnter(object sender, MouseEventArgs e)
@@ -244,7 +245,7 @@ namespace CPT
         {
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJulPercent");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void Sort_Change_MouseEnter(object sender, MouseEventArgs e)
@@ -261,7 +262,7 @@ namespace CPT
         {   
             Sort sort = new Sort();
             sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getChange");
-            Table tb = new Table(580, 3075 - removed, 1);
+            tb = new Table(580, 3075 - removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
         private void GPU_Graph_Loaded(object sender, RoutedEventArgs e)
@@ -310,7 +311,6 @@ namespace CPT
                         break;
                 }
             }*/
-
             gr.AddBar(otherPercent, 30, new SolidColorBrush(Color.FromRgb(0xF9, 0xE0, 0x7F)), 20, "Other", 12, 0, -5);
             gr.AddBar(nvidiaPercent, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 70, "Nvidia", 12, -2, -5);
             gr.AddBar(intelPercent, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 120, "Intel", 12, 4, -5);
@@ -319,7 +319,7 @@ namespace CPT
 
         private void GPU_More_Info_Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            Table tb = new Table(580, 3075, 1);
+            tb = new Table(580, 3075, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
         }
 
@@ -367,7 +367,7 @@ namespace CPT
             if (Search_bar.Text != "")
             {
                 Search_label.Visibility = Visibility.Hidden;
-                ds = new Dataset();
+                ds.loadGPU();
 
                 for (int t = 0; t < 10; t++)
                 {
@@ -384,12 +384,45 @@ namespace CPT
             else
             {
                 Search_label.Visibility = Visibility.Visible;
-                ds = new Dataset();
+                ds.loadGPU();
             }
 
             await Task.Delay(300);
-            Table tb = new Table(580, 3075-removed, 1);
+            tb = new Table(580, 3075-removed, 1);
             this.StackColumn = tb.loadTable(this.StackColumn, ds);
+        }
+
+        private void CPU_Graph_Loaded(object sender, RoutedEventArgs e)
+        {
+            Graph gr = new Graph(241, 134, 1, false);
+            this.GPU_Graph = gr.DrawGraph(this.GPU_Graph, ds);
+
+            double nvidiaPercent = 0.00, amdPercent = 0.00, intelPercent = 0.00, otherPercent = 0.00;
+
+            foreach (GPU gpu in ds.gpus)
+            {
+                string gpuMfg = gpu.getName().Substring(0, 3);
+                switch (gpuMfg)
+                {
+                    case "NVI":
+                        nvidiaPercent += gpu.getJulPercent();
+                        break;
+                    case "AMD":
+                        amdPercent += gpu.getJulPercent();
+                        break;
+                    case "Int":
+                        intelPercent += gpu.getJulPercent();
+                        break;
+                    case "Oth":
+                        otherPercent += gpu.getJulPercent();
+                        break;
+                }
+            }
+
+            gr.AddBar(otherPercent, 30, new SolidColorBrush(Color.FromRgb(0xF9, 0xE0, 0x7F)), 20, "Other", 12, 0, -5);
+            gr.AddBar(nvidiaPercent, 30, new SolidColorBrush(Color.FromRgb(0x98, 0xb3, 0x54)), 70, "Nvidia", 12, -2, -5);
+            gr.AddBar(intelPercent, 30, new SolidColorBrush(Color.FromRgb(0x00, 0xBC, 0xB4)), 120, "Intel", 12, 4, -5);
+            gr.AddBar(amdPercent, 30, new SolidColorBrush(Color.FromRgb(0xD4, 0x6C, 0x4E)), 170, "AMD", 12, 1.5, -5);
         }
     }
 }

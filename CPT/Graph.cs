@@ -107,5 +107,13 @@ namespace CPT
             text.Margin = new Thickness(barPosition + thickness + fontXDisplacement, 0, 0, value + fontSize + thickness);
             graph.Children.Add(text);
         }
+        public void ClearBars()
+        {
+            graph.Children.Clear();
+        }
+        public void RemoveBar(int barNumber)
+        {
+            graph.Children.RemoveAt(barNumber);
+        }
     }
 }

@@ -78,5 +78,6 @@
             <TextBlock x:Name="Sort_Change" HorizontalAlignment="Left" Margin="632,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Change_MouseEnter" MouseLeave="Sort_Change_MouseLeave" MouseLeftButtonDown="Sort_Change_MouseLeftButtonDown"/>
             <Rectangle x:Name="Sort_Change_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="632,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
         </Grid>
+        <Grid x:Name="CPU_Graph" HorizontalAlignment="Left" Height="134" Margin="437,189,0,0" VerticalAlignment="Top" Width="241" Loaded="CPU_Graph_Loaded"/>
     </Grid>
 </Window>
