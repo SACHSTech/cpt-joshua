@@ -7,10 +7,15 @@ using System.Threading.Tasks;
 
 namespace CPT
 {
+    /**
+    * A class to hold information associated with cpu
+    * unlike the gpu class which I did in the java style since this was secondary to the main main cpt I did thing one with c# conventions
+    * @author Joshua Shuttleworth
+    */
     public class Dataset
     {
-        public List<GPU> gpus;
-        public List<CPU> cpus;
+        private List<GPU> gpus;
+        private List<CPU> cpus;
         public Dataset()
         {
             gpus = new List<GPU>();
@@ -37,11 +42,16 @@ namespace CPT
                 cpus.Add(new CPU(Convert.ToInt32(split[0]), Convert.ToDouble(split[1]), split[2], Convert.ToDouble(split[3]), Convert.ToDouble(split[4]), Convert.ToDouble(split[5]), Convert.ToDouble(split[6]), Convert.ToDouble(split[7]), split[8]));
             }
         }
-        
-        public void addGPU(GPU gpu)
-        {
-            gpus.Add(gpu);
+
+        public List<GPU> getGPUList()
+        { 
+            return gpus;
         }
+        public List<CPU> getCPUList()
+        {
+            return cpus;
+        }
+
         public void removeGPU(GPU gpu)
         {
             gpus.Remove(gpu);
@@ -50,10 +60,7 @@ namespace CPT
         {
             cpus.Remove(cpu);
         }
-        public List<GPU> getList()
-        {
-            return gpus;
-        }
+
         public GPU getGPU(int index)
         {
             return gpus[index];
@@ -62,6 +69,7 @@ namespace CPT
         {
             return cpus[index];
         }
+
         public int getGPUSize()
         {
             return gpus.Count;

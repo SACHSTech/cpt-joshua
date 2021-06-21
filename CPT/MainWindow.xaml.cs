@@ -156,7 +156,7 @@ namespace CPT
         private void Sort_Name_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortStrings(ds.gpus, 0, ds.gpus.Count - 1, "");
+            sort.SortStrings(ds.getGPUList(), 0, ds.getGPUSize() - 1, "");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -164,7 +164,7 @@ namespace CPT
         private void Sort_March_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMarPercent");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getMarPercent");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -172,7 +172,7 @@ namespace CPT
         private void Load_Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getRanking");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getRanking"); ;
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -190,7 +190,7 @@ namespace CPT
         private void Sort_April_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getAprPercent");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getAprPercent");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -206,7 +206,7 @@ namespace CPT
         private void Sort_May_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getMayPercent");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getMayPercent");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -223,7 +223,7 @@ namespace CPT
         private void Sort_June_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJunPercent");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getJunPercent");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -240,7 +240,7 @@ namespace CPT
         private void Sort_July_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getJulPercent");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getJulPercent");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -257,7 +257,7 @@ namespace CPT
         private void Sort_Change_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {   
             Sort sort = new Sort();
-            sort.SortDoubles(ds.gpus, 0, ds.gpus.Count - 1, "getChange");
+            sort.SortDoubles(ds.getGPUList(), 0, ds.getGPUSize() - 1, "getChange");
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }
@@ -268,7 +268,7 @@ namespace CPT
 
             double nvidiaPercent = 0.00, amdPercent = 0.00, intelPercent = 0.00, otherPercent = 0.00;
 
-            foreach (GPU gpu in ds.gpus)
+            foreach (GPU gpu in ds.getGPUList())
             {
                 string gpuMfg = gpu.getName().Substring(0, 3);
                 switch (gpuMfg)
@@ -394,30 +394,33 @@ namespace CPT
             this.CPU_Graph = gr2.DrawGraph(this.CPU_Graph);
 
             double other = 0.00, eight = 0.00, six = 0.00, four = 0.00, two = 0.00;
-            foreach (CPU cpu in ds.cpus)
+            foreach (CPU cpu in ds.getCPUList())
             {
                 switch (cpu.Cores)
                 {
-                    case 8: 
-                        eight = cpu.Jul;
+                    case 8:
+                        eight += cpu.Jul;
                         break;
                     case 6:
-                        six = cpu.Jul;
+                        six += cpu.Jul;
                         break;
                     case 4:
-                        four = cpu.Jul;
+                        four += cpu.Jul;
                         break;
                     case 2:
-                        two = cpu.Jul;
+                        two += cpu.Jul;
+                        break;
+                    default:
+                        other += cpu.Jul;
                         break;
                 }
             }
-            other = Math.Round(100 - (eight + six + four + two), 2);
-            gr2.AddBar(other, 20, new SolidColorBrush(Color.FromRgb(0xEE, 0xE7, 0xDF)), 20, "Other", 12, -4, -5);
-            gr2.AddBar(eight, 20, new SolidColorBrush(Color.FromRgb(0x4D, 0x85, 0x81)), 60, "8 core", 12, -6, -5);
-            gr2.AddBar(six, 20, new SolidColorBrush(Color.FromRgb(0xDB, 0xCB, 0xBE)), 100, "6 core", 12, -6, -5);
-            gr2.AddBar(four, 20, new SolidColorBrush(Color.FromRgb(0xB0, 0x98, 0x8E)), 140, "4 core", 12, -6, -5);
-            gr2.AddBar(two, 20, new SolidColorBrush(Color.FromRgb(0xAB, 0xDE, 0xD7)), 180, "2 core", 12, -6, -5);
+
+            gr2.AddBar(Math.Round(other / 3, 2), 20, new SolidColorBrush(Color.FromRgb(0xEE, 0xE7, 0xDF)), 20, "Other", 12, -4, -5);
+            gr2.AddBar(Math.Round(eight / 3, 2), 20, new SolidColorBrush(Color.FromRgb(0x4D, 0x85, 0x81)), 60, "8 core", 12, -6, -5);
+            gr2.AddBar(Math.Round(six / 3, 2), 20, new SolidColorBrush(Color.FromRgb(0xDB, 0xCB, 0xBE)), 100, "6 core", 12, -6, -5);
+            gr2.AddBar(Math.Round(four / 3, 2), 20, new SolidColorBrush(Color.FromRgb(0xB0, 0x98, 0x8E)), 140, "4 core", 12, -6, -5);
+            gr2.AddBar(Math.Round(two / 3, 2), 20, new SolidColorBrush(Color.FromRgb(0xAB, 0xDE, 0xD7)), 180, "2 core", 12, -6, -5);
         }
 
         private void CPU_Back_MouseEnter(object sender, MouseEventArgs e)
