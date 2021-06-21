@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -60,7 +55,6 @@ namespace CPT
             rect.Width = thickness;
             rect.HorizontalAlignment = HorizontalAlignment.Left;
             rect.VerticalAlignment = VerticalAlignment.Top;
-            // rect.Margin = new Thickness(10, 0, 0, 0);
             rect.Margin = new Thickness(0, 0, 0, 0);
             rect.Height = height-10;
             rect.Fill = Brushes.White;
@@ -88,16 +82,6 @@ namespace CPT
             text.Foreground = barColor;
             graph.Children.Add(text);
 
-            /*text = new TextBlock();
-            text.Text = value+"%";
-            text.FontSize = fontSize/1.3;
-            text.HorizontalAlignment = HorizontalAlignment.Left;
-            text.TextAlignment = TextAlignment.Center;
-            text.VerticalAlignment = VerticalAlignment.Bottom;
-            text.Foreground = barColor;
-            text.Margin = new Thickness(-(10 + thickness + (text.Text.Length*fontSize/5)), 0, 0, value + thickness + fontSize / 1.3);
-            graph.Children.Add(text);*/
-
             text = new TextBlock();
             text.Text = value+"%";
             text.FontSize = fontSize/1.3;
@@ -105,6 +89,7 @@ namespace CPT
             text.TextAlignment = TextAlignment.Center;
             text.VerticalAlignment = VerticalAlignment.Bottom;
             text.Foreground = barColor;
+            //text.Margin = new Thickness(-(10 + thickness + (text.Text.Length*fontSize/5)), 0, 0, value + thickness + fontSize / 1.3);
             text.Margin = new Thickness(barPosition + thickness , 0, 0, value + fontSize + thickness);
             graph.Children.Add(text);
         }

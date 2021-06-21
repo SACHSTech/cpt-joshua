@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CPT
 {
@@ -14,7 +10,7 @@ namespace CPT
 
             int P_index = f;
             int i;
-            GPU t;
+            var t = data[0];
 
             for (i = f; i < datasetSize; i++)
             {
@@ -33,6 +29,14 @@ namespace CPT
 
             return P_index;
         }
+
+        /**
+         * 
+         * @param data is the array
+         * @param f is the lowest of the array
+         * @param datasetSize is the size of the array
+         * @param valueName is the name of the 
+         */
         public void SortDoubles(List<GPU> data, int f, int datasetSize, string valueName)
         {
             if (f < datasetSize)
@@ -43,13 +47,13 @@ namespace CPT
             }
         }
 
-        private int partitionStrings(List<GPU> data, int f, int datasetSize, string valueName)
+        private int partitionStrings(List<GPU> data, int f, int datasetSize)
         {
             string pivot = data[datasetSize].getName();
 
             int P_index = f;
             int i;
-            GPU t;
+            var t = data[0];
 
             for (i = f; i < datasetSize; i++)
             {
@@ -68,13 +72,13 @@ namespace CPT
 
             return P_index;
         }
-        public void SortStrings(List<GPU> data, int f, int datasetSize, string valueName)
+        public void SortStrings(List<GPU> data, int f, int datasetSize)
         {
             if (f < datasetSize)
             {
-                int P_index = partitionStrings(data, f, datasetSize, valueName);
-                SortStrings(data, f, P_index - 1, valueName);
-                SortStrings(data, P_index + 1, datasetSize, valueName);
+                int P_index = partitionStrings(data, f, datasetSize);
+                SortStrings(data, f, P_index - 1);
+                SortStrings(data, P_index + 1, datasetSize);
             }
         }
     }

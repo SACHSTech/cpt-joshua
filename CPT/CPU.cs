@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CPT
+﻿namespace CPT
 {
-    /**
-    * A class to hold information associated with cpu
-    * unlike the gpu class which I did in the java style since this was secondary to the main main cpt I did thing one with c# conventions
-    * @author Joshua Shuttleworth
-    */
+    /// <summary>
+    /// A class to data of each cpu
+    /// unlike the gpu class which I did in the java style since this was secondary to the main main cpt I did thing one with c# conventions
+    /// @author Joshua Shuttleworth
+    /// </summary>
     public class CPU
     {
         // Constructor

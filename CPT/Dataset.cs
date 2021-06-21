@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CPT
 {
     /**
-    * A class to hold information associated with cpu
-    * unlike the gpu class which I did in the java style since this was secondary to the main main cpt I did thing one with c# conventions
+    * 
+    * 
     * @author Joshua Shuttleworth
     */
     public class Dataset

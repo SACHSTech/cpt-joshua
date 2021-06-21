@@ -4,8 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System;
-using System.Timers;
 
 namespace CPT
 {
@@ -156,7 +154,7 @@ namespace CPT
         private void Sort_Name_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sort sort = new Sort();
-            sort.SortStrings(ds.getGPUList(), 0, ds.getGPUSize() - 1, "");
+            sort.SortStrings(ds.getGPUList(), 0, ds.getGPUSize() - 1);
             tb = new Table(580, 3075 - gpu_removed, 1);
             this.StackColumn = tb.loadGPUTable(this.StackColumn, ds);
         }

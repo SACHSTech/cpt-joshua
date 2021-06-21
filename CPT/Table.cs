@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,19 +6,36 @@ using System.Windows.Shapes;
 
 namespace CPT
 {
-    /// <summary>
-    /// It just works ¯\_(ツ)_/¯
-    /// https://www.youtube.com/watch?v=YPN0qhSyWy8&t=67s
-    /// </summary>
+    /**
+     * A class to create tables
+     * It just works ¯\_(ツ)_/¯
+     * https://www.youtube.com/watch?v=YPN0qhSyWy8&t=67s
+     * @author Joshua Shuttleworth
+     */
     class Table
     {
+        // var decloration
         private double width, height, thinkness;
+
+        /**
+         * Contructs the table class
+         * @param width
+         * @param height
+         * @param thickness
+         */
         public Table(double width, double height, double thinkness)
         {
             this.width = width;
             this.height = height;
             this.thinkness = thinkness;
         }
+
+        /**
+         * Creates a table to display the data from the csv file about the usage of a given gpu on steam
+         * @param stackPanel
+         * @param ds
+         * @return a StackPanel which is the compleated table
+         */
         public StackPanel loadGPUTable(StackPanel stackPanel, Dataset ds)
         {
             StackPanel StackColumn = stackPanel;
@@ -79,6 +92,13 @@ namespace CPT
             }
             return StackColumn;
         }
+
+        /**
+         * Creates a table to display the data from the csv file about the usage of cpus with a given core count on steam
+         * @param stackPanel
+         * @param ds
+         * @return a StackPanel which is the compleated table
+         */
         public StackPanel loadCPUTable(StackPanel stackPanel, Dataset ds)
         {
             StackPanel StackColumn = stackPanel;
@@ -139,6 +159,10 @@ namespace CPT
             }
             return StackColumn;
         }
+
+        /**
+         * @return a Grid that acts as a column in the table
+         */
         private Grid addColumn(int Width, String Text)
         {
             Grid grid = new Grid();
@@ -154,6 +178,10 @@ namespace CPT
             grid.Children.Add(label);
             return grid;
         }
+
+        /**
+         * @return a StackPanel that acts as a row in the table
+         */
         private StackPanel addRow()
         {
             StackPanel Row = new StackPanel();
@@ -164,6 +192,10 @@ namespace CPT
             Row.Orientation = Orientation.Horizontal;
             return Row;
         }
+
+        /**
+         * @return a Rectangle that acts as a horizontal spacer given the thickness when the class is contructed
+         */
         private Rectangle addHSpacer()
         {
             Rectangle rect = new Rectangle();
@@ -174,6 +206,10 @@ namespace CPT
             rect.VerticalAlignment = VerticalAlignment.Center;
             return rect;
         }
+
+        /**
+         * @return a Rectangle that acts as a vertical spacer given the thickness when the class is contructed
+         */
         private Rectangle addVSpacer()
         {
             Rectangle rect = new Rectangle();
