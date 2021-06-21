@@ -10,9 +10,11 @@ namespace CPT
     public class Dataset
     {
         public List<GPU> gpus;
+        public List<CPU> cpus;
         public Dataset()
         {
             gpus = new List<GPU>();
+            cpus = new List<CPU>();
         }
         public void loadGPU()
         {
@@ -24,6 +26,18 @@ namespace CPT
                 gpus.Add(new GPU(Int32.Parse(split[0]), split[1], Convert.ToDouble(split[2]), Convert.ToDouble(split[3]), Convert.ToDouble(split[4]), Convert.ToDouble(split[5]), Convert.ToDouble(split[6]), split[7]));
             }
         }
+        
+        public void loadCPU()
+        {
+            cpus.Clear();
+            string[] lines = File.ReadAllLines(@"..\..\csv\cpu_cores.csv");
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var split = ((((lines[i].Replace("%", "")).Replace("-,", "0,")).Replace(" cpus", "")).Replace(" cpu", "")).Split(',');
+                cpus.Add(new CPU(Convert.ToInt32(split[0]), Convert.ToDouble(split[1]), split[2], Convert.ToDouble(split[3]), Convert.ToDouble(split[4]), Convert.ToDouble(split[5]), Convert.ToDouble(split[6]), Convert.ToDouble(split[7]), split[8]));
+            }
+        }
+        
         public void addGPU(GPU gpu)
         {
             gpus.Add(gpu);
@@ -31,6 +45,10 @@ namespace CPT
         public void removeGPU(GPU gpu)
         {
             gpus.Remove(gpu);
+        }
+        public void removeCPU(CPU cpu)
+        {
+            cpus.Remove(cpu);
         }
         public List<GPU> getList()
         {
@@ -40,9 +58,17 @@ namespace CPT
         {
             return gpus[index];
         }
+        public CPU getCPU(int index)
+        {
+            return cpus[index];
+        }
         public int getGPUSize()
         {
             return gpus.Count;
+        }
+        public int getCPUSize()
+        {
+            return cpus.Count;
         }
     }
 }

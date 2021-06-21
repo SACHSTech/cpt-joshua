@@ -22,8 +22,9 @@ namespace CPT
             this.thickness = thickness;
             this.bg = bg;
         }
-        public Grid DrawGraph(Grid grid, Dataset ds)
+        public Grid DrawGraph(Grid grid)
         {
+            graph = new Grid();
             graph = grid;
             graph.Width = width;
             graph.Height = height;
@@ -104,7 +105,7 @@ namespace CPT
             text.TextAlignment = TextAlignment.Center;
             text.VerticalAlignment = VerticalAlignment.Bottom;
             text.Foreground = barColor;
-            text.Margin = new Thickness(barPosition + thickness + fontXDisplacement, 0, 0, value + fontSize + thickness);
+            text.Margin = new Thickness(barPosition + thickness , 0, 0, value + fontSize + thickness);
             graph.Children.Add(text);
         }
         public void ClearBars()

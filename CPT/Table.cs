@@ -23,7 +23,7 @@ namespace CPT
             this.height = height;
             this.thinkness = thinkness;
         }
-        public StackPanel loadTable(StackPanel stackPanel, Dataset ds)
+        public StackPanel loadGPUTable(StackPanel stackPanel, Dataset ds)
         {
             StackPanel StackColumn = stackPanel;
             StackColumn.Height = height;
@@ -72,6 +72,66 @@ namespace CPT
                 Row.Children.Add(addColumn(42, " " + ds.getGPU(i).getJulPercent()));
                 Row.Children.Add(addVSpacer());
                 Row.Children.Add(addColumn(50, " " + ds.getGPU(i).getChange()));
+                Row.Children.Add(addVSpacer());
+
+                StackColumn.Children.Add(Row);
+                StackColumn.Children.Add(addHSpacer());
+            }
+            return StackColumn;
+        }
+        public StackPanel loadCPUTable(StackPanel stackPanel, Dataset ds)
+        {
+            StackPanel StackColumn = stackPanel;
+            StackColumn.Height = height;
+            StackColumn.Width = width;
+            StackColumn.Children.Clear();
+            StackPanel Row;
+
+            Row = addRow();
+
+            Row.Children.Add(addColumn(55, " Ranking"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(38, " Cores"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(66, " OS"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(55, " March %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(46, " April %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(44, " May %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(46, " June %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(42, " July %"));
+            Row.Children.Add(addVSpacer());
+            Row.Children.Add(addColumn(50, " Change"));
+            Row.Children.Add(addVSpacer());
+
+            StackColumn.Children.Add(Row);
+            StackColumn.Children.Add(addHSpacer());
+
+            for (int i = 0; i < ds.getCPUSize(); i++)
+            {
+                Row = addRow();
+
+                Row.Children.Add(addColumn(55, " " + ds.getCPU(i).Ranking));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(38, " " + ds.getCPU(i).Cores));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(66, " " + ds.getCPU(i).OS));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(55, " " + ds.getCPU(i).Mar));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(46, " " + ds.getCPU(i).Apr));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(44, " " + ds.getCPU(i).May));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(46, " " + ds.getCPU(i).Jun));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(42, " " + ds.getCPU(i).Jul));
+                Row.Children.Add(addVSpacer());
+                Row.Children.Add(addColumn(50, " " + ds.getCPU(i).Change));
                 Row.Children.Add(addVSpacer());
 
                 StackColumn.Children.Add(Row);
