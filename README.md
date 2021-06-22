@@ -1,5 +1,3 @@
-# JavaFX Demo
-
 ## Description of data
 The data set that I have chosen is the steam hardware survey. It containes data of what percent share that a given graphics card, processor, core count, clock speed, or graphics api has of the computer steam users use. I however only used the data for the graphics card usage and cpu core count.
 
@@ -14,5 +12,3 @@ I picked the steam hardware survey because I find the reaults of it intresting t
 
 ## Code Walk though
 [![Code Walk though](https://cdn.discordapp.com/attachments/676226832856776714/856958294953164820/unknown.png)](https://www.youtube.com/watch?v=h1ljgNs50NU "Grade 12 ICS4U CPT Code Walk though")
-
-Check the [VS Code, Java, and JavaFX Install and Set Up](https://docs.google.com/document/d/1s5oTmY8A8TDZu303p_DaH6CEAcC9xL8-aNX-pAxCcps/edit?usp=sharing) doc for set up and getting started instructions.
