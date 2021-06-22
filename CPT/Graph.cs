@@ -5,11 +5,25 @@ using System.Windows.Shapes;
 
 namespace CPT
 {
+    /**
+     * A class to create graphs
+     * @author Joshua Shuttleworth
+     */
     class Graph
     {
+        // Create grid
         private Grid graph;
+
+        // var decloration
         private int width, height, thickness;
         private bool bg;
+
+        /**
+         * Contructs the graph class
+         * @param graph width
+         * @param graph height
+         * @param graph thickness
+         */
         public Graph(int width, int height, int thickness, bool bg)
         {
             this.width = width;
@@ -17,6 +31,12 @@ namespace CPT
             this.thickness = thickness;
             this.bg = bg;
         }
+
+        /**
+         * Method to create a canvas where all the background, bars, and text will later be drawn onto
+         * @param grid
+         * @return a grid that acts as the canvas where the graph will be drawn on
+         */
         public Grid DrawGraph(Grid grid)
         {
             graph = new Grid();
@@ -29,6 +49,10 @@ namespace CPT
 
             return graph;
         }
+
+        /**
+         * Draws the axis of the graph
+         */
         private void DrawBG()
         {
             Rectangle rect;
@@ -61,6 +85,17 @@ namespace CPT
             graph.Children.Add(rect);
         }
 
+        /**
+         * Adds then drawns bars to the graph
+         * @param value of the bar
+         * @param thickness of the bar
+         * @param color of the bar
+         * @param position of the bar
+         * @param name of the bar
+         * @param size of the font for the text around the bar
+         * @param displacement of the x axis for the text around the bar
+         * @param displacement of the y axis for the text around the bar
+         */
         public void AddBar(double value, double barThickness, Brush barColor, double barPosition, string name, double fontSize, double fontXDisplacement, double fontYDisplacement)
         {
             Rectangle rect = new Rectangle();
@@ -93,10 +128,19 @@ namespace CPT
             text.Margin = new Thickness(barPosition + thickness , 0, 0, value + fontSize + thickness);
             graph.Children.Add(text);
         }
+
+        /**
+         * Clears the bars
+         */
         public void ClearBars()
         {
             graph.Children.Clear();
         }
+
+        /**
+         * Removes a bar from the graph
+         * @param bar number
+         */
         public void RemoveBar(int barNumber)
         {
             graph.Children.RemoveAt(barNumber);

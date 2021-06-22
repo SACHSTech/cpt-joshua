@@ -19,9 +19,9 @@ namespace CPT
 
         /**
          * Contructs the table class
-         * @param width
-         * @param height
-         * @param thickness
+         * @param table width
+         * @param table height
+         * @param table thickness
          */
         public Table(double width, double height, double thinkness)
         {
@@ -46,7 +46,7 @@ namespace CPT
 
             Row = addRow();
 
-            Row.Children.Add(addColumn(55, " Ranking"));
+            Row.Children.Add(addColumn(55, " Data ID"));
             Row.Children.Add(addVSpacer());
             Row.Children.Add(addColumn(220, " Name"));
             Row.Children.Add(addVSpacer());
@@ -109,7 +109,7 @@ namespace CPT
 
             Row = addRow();
 
-            Row.Children.Add(addColumn(55, " Ranking"));
+            Row.Children.Add(addColumn(55, " Data ID"));
             Row.Children.Add(addVSpacer());
             Row.Children.Add(addColumn(38, " Cores"));
             Row.Children.Add(addVSpacer());

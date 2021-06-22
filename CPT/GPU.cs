@@ -117,7 +117,9 @@ namespace CPT
             }         
         }
 
-
+        /**
+         * Useless toString added to emulate java
+         */
         public String toString()
         {
             return getRanking() + " | " + getMarPercent() + " | " + getAprPercent() + " | " + getMayPercent() + " | " + getJunPercent() + " | " + getJulPercent() + " | " + getChange();

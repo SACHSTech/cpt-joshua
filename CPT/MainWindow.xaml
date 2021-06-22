@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CPT"
         mc:Ignorable="d"
         Title="MainWindow" Height="386" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -27,7 +26,8 @@
         <Grid x:Name="CPU_Graph" HorizontalAlignment="Left" Height="134" Margin="437,189,0,0" VerticalAlignment="Top" Width="241" Loaded="CPU_Graph_Loaded"/>
         <Grid x:Name="GPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838" Loaded="GPU_More_Info_Grid_Loaded" Visibility="Hidden">
             <!--Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="705,193,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/-->
-            <TextBlock x:Name="Back" HorizontalAlignment="Left" Margin="18,8,0,0" TextWrapping="Wrap" Text="➥" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" RenderTransformOrigin="0.5,0.5" FontSize="18" MouseEnter="Back_MouseEnter" MouseLeave="Back_MouseLeave" MouseLeftButtonDown="Back_MouseLeftButtonDown" MouseLeftButtonUp="Back_MouseLeftButtonUp">
+            <!-->The button stays for good luck<-->
+            <TextBlock x:Name="GPU_Back" HorizontalAlignment="Left" Margin="18,8,0,0" TextWrapping="Wrap" Text="➥" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" RenderTransformOrigin="0.5,0.5" FontSize="18" MouseEnter="GPU_Back_MouseEnter" MouseLeave="GPU_Back_MouseLeave" MouseLeftButtonDown="GPU_Back_MouseLeftButtonDown" MouseLeftButtonUp="GPU_Back_MouseLeftButtonUp">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -37,33 +37,15 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <Rectangle x:Name="Back_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="18,28,764,0" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
-            <Label x:Name="Search_label" Content="Search" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Foreground="#FF999999"/>
-            <TextBox x:Name="Search_bar" BorderThickness="0" HorizontalAlignment="Left" Height="18" Margin="113,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="Search_bar_TextChanged" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF7DF9FF" CaretBrush="White"/>
+            <Rectangle x:Name="GPU_Back_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="18,28,764,0" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+            <Label x:Name="GPU_Search_label" Content="Search" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Foreground="#FF999999"/>
+            <TextBox x:Name="GPU_Search_bar" BorderThickness="0" HorizontalAlignment="Left" Height="18" Margin="113,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="GPU_Search_bar_TextChanged" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF7DF9FF" CaretBrush="White"/>
             <Rectangle Fill="White" HorizontalAlignment="Left" Height="1" Margin="110,32,0,0" VerticalAlignment="Top" Width="192"/>
             <ScrollViewer HorizontalAlignment="Left" Height="267" Margin="110,45,0,0" VerticalAlignment="Top" Width="580">
-                <StackPanel x:Name="StackColumn" Height="282">
-                    <!--StackPanel x:Name="StackNames" Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
-                            <Label Foreground="White" Content="Ranking" />
-                        </Grid>
-                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150">
-                            <Label Foreground="White" Content="Name"/>
-                        </Grid>
-                    </>
-                    <Rectangle Fill="#FFF4F4F5" Height="1" Width="780"/>
-                    <StackPanel Height="30" Width="760" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55">
-                            <Label Foreground="White" Content="Ranking" />
-                        </Grid>
-                        <Grid Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150">
-                            <Label Foreground="White" Content="Name"/>
-                        </Grid>
-                    </StackPanel-->
-                </StackPanel>
+                <StackPanel x:Name="StackColumn" Height="282"/>
             </ScrollViewer>
-            <TextBlock x:Name="Load_Table" HorizontalAlignment="Left" Margin="114,322,0,0" TextWrapping="Wrap" Text="Ranking" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Load_Table_MouseEnter" MouseLeave="Load_Table_MouseLeave" MouseLeftButtonDown="Load_Table_MouseLeftButtonDown"/>
-            <Rectangle x:Name="Load_Table_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="114,341,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_Data_ID" HorizontalAlignment="Left" Margin="114,322,0,0" TextWrapping="Wrap" Text="Data ID" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Data_ID_MouseEnter" MouseLeave="Sort_Data_ID_MouseLeave" MouseLeftButtonDown="Sort_Data_ID_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_Data_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="114,341,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden"/>
             <Rectangle x:Name="Sort_Name_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="240,341,487,0" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
             <TextBlock x:Name="Sort_Name" HorizontalAlignment="Left" Margin="240,322,0,0" TextWrapping="Wrap" Text="Sort By Name" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Name_MouseEnter" MouseLeave="Sort_Name_MouseLeave" MouseLeftButtonDown="Sort_Name_MouseLeftButtonDown"/>
             <TextBlock x:Name="Sort_March" HorizontalAlignment="Left" Margin="397,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_March_MouseEnter" MouseLeave="Sort_March_MouseLeave" MouseLeftButtonDown="Sort_March_MouseLeftButtonDown"/>

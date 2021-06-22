@@ -4,6 +4,22 @@ namespace CPT
 {
     class Sort
     {
+        /**
+         * Qicksort alorithm to sort a list of gpus by the double values contained in them
+         * @param data is the array
+         * @param f is the lowest of the array
+         * @param datasetSize is the size of the array
+         * @param valueName is the name of the data to be reterived from dataset
+         */
+        public void SortDoubles(List<GPU> data, int f, int datasetSize, string valueName)
+        {
+            if (f < datasetSize)
+            {
+                int P_index = partitionDoubles(data, f, datasetSize, valueName);
+                SortDoubles(data, f, P_index - 1, valueName);
+                SortDoubles(data, P_index + 1, datasetSize, valueName);
+            }
+        }
         private int partitionDoubles(List<GPU> data, int f, int datasetSize, string valueName)
         {
             double pivot = data[datasetSize].getValue(valueName);
@@ -30,23 +46,22 @@ namespace CPT
             return P_index;
         }
 
+
         /**
-         * 
+         * Qicksort alorithm to sort a list of gpus by the string values contained in them
          * @param data is the array
          * @param f is the lowest of the array
          * @param datasetSize is the size of the array
-         * @param valueName is the name of the 
          */
-        public void SortDoubles(List<GPU> data, int f, int datasetSize, string valueName)
+        public void SortStrings(List<GPU> data, int f, int datasetSize)
         {
             if (f < datasetSize)
             {
-                int P_index = partitionDoubles(data, f, datasetSize, valueName);
-                SortDoubles(data, f, P_index - 1, valueName);
-                SortDoubles(data, P_index + 1, datasetSize, valueName);
+                int P_index = partitionStrings(data, f, datasetSize);
+                SortStrings(data, f, P_index - 1);
+                SortStrings(data, P_index + 1, datasetSize);
             }
         }
-
         private int partitionStrings(List<GPU> data, int f, int datasetSize)
         {
             string pivot = data[datasetSize].getName();
@@ -71,15 +86,6 @@ namespace CPT
             data[P_index] = t;
 
             return P_index;
-        }
-        public void SortStrings(List<GPU> data, int f, int datasetSize)
-        {
-            if (f < datasetSize)
-            {
-                int P_index = partitionStrings(data, f, datasetSize);
-                SortStrings(data, f, P_index - 1);
-                SortStrings(data, P_index + 1, datasetSize);
-            }
         }
     }
 }

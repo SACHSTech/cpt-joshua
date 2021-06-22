@@ -20,7 +20,7 @@
             Jul = _jul;
             Change = _change;
         }
-
+        
         // Getters and setters
         public int Ranking { get; private set; }
         public double Cores { get; private set; }
