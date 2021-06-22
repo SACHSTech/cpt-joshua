@@ -1,0 +1,84 @@
+﻿<Window x:Class="CPT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="386" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle Fill="#FF1B2838" HorizontalAlignment="Left" Height="386" VerticalAlignment="Top" Width="800" MouseDown="Rectangle_MouseDown"/>
+        <Label Content="Steam Hardware &amp; Software Survey:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="188" Margin="86,165,0,0" VerticalAlignment="Top" Width="306" Opacity="0.5"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="27" Margin="86,137,0,0" VerticalAlignment="Top" Width="306" Opacity="0.4"/>
+        <Label Content="PC VIDEO CARD USAGE BY MFG" HorizontalAlignment="Left" Margin="90,141,0,0" VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="10"/>
+        <Label x:Name="GPU_More_Info" Content="CLICK FOR MORE INFO" HorizontalAlignment="Left" Margin="177,333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="9.8" Foreground="#FF63BAEC" MouseLeave="GPU_More_Info_MouseLeave" MouseEnter="GPU_More_Info_MouseEnter" MouseLeftButtonDown="GPU_More_Info_MouseLeftButtonDown" MouseLeftButtonUp="GPU_More_Info_MouseLeftButtonUp"/>
+        <Label x:Name="Clicked" Content="Clicked" HorizontalAlignment="Left" Margin="742,360,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Hidden"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="188" Margin="403,165,0,0" VerticalAlignment="Top" Width="306" Opacity="0.5"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="27" Margin="403,137,0,0" VerticalAlignment="Top" Width="306" Opacity="0.4"/>
+        <Label Content="PC NUMBER OF CORES PER COMPUTER" HorizontalAlignment="Left" Margin="407,141,0,0" VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="10"/>
+        <Label x:Name="CPU_More_Info" Content="CLICK FOR MORE INFO" HorizontalAlignment="Left" Margin="493,333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="9.8" Foreground="#FF63BAEC" MouseEnter="CPU_More_Info_MouseEnter" MouseLeave="CPU_More_Info_MouseLeave" MouseLeftButtonDown="CPU_More_Info_MouseLeftButtonDown" MouseLeftButtonUp="CPU_More_Info_MouseLeftButtonUp"/>
+        <TextBlock HorizontalAlignment="Left" Margin="15,79,0,0" TextWrapping="Wrap" Text="Steam conducts a monthly survey to collect data about what kinds of computer hardware and software our customers are using. Participation in the survey is optional, and anonymous. The information gathered is incredibly helpful to us as we make decisions about what kinds of technology investments to make and products to offer. " VerticalAlignment="Top" Foreground="#FFC6D4DF" FontFamily="Arial" FontSize="14" Width="761"/>
+        <Label x:Name="Close" Content=" X" HorizontalAlignment="Center" Margin="775,0,0,363" VerticalAlignment="Center" FontFamily="Arial" Background="{x:Null}" Foreground="White" Width="25" Height="23" MouseEnter="Close_MouseEnter" MouseLeave="Close_MouseLeave" MouseLeftButtonDown="Close_MouseLeftButtonDown"/>
+        <Label x:Name="Min" Content=" _" HorizontalAlignment="Center" Margin="750,0,25,363" VerticalAlignment="Center" FontFamily="Arial" Background="{x:Null}" Foreground="White" Width="25" Height="23" MouseEnter="Min_MouseEnter" MouseLeave="Min_MouseLeave" MouseDown="Min_MouseDown"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Steam" VerticalAlignment="Top" Width="690" TextAlignment="Center" Foreground="White" FontSize="16" Height="23" Margin="55,3,0,0" MouseDown="TextBlock_MouseDown"/>
+        <Image HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="31" Source="Steem.png" Margin="0,5,0,0"/>
+        <Grid x:Name="GPU_Graph" HorizontalAlignment="Left" Height="134" Margin="118,189,0,0" VerticalAlignment="Top" Width="241" Loaded="GPU_Graph_Loaded"/>
+        <Grid x:Name="CPU_Graph" HorizontalAlignment="Left" Height="134" Margin="437,189,0,0" VerticalAlignment="Top" Width="241" Loaded="CPU_Graph_Loaded"/>
+        <Grid x:Name="GPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838" Loaded="GPU_More_Info_Grid_Loaded" Visibility="Hidden">
+            <!--Button x:Name="Back" Content="Button" HorizontalAlignment="Left" Margin="705,193,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/-->
+            <!-->The button stays for good luck<-->
+            <TextBlock x:Name="GPU_Back" HorizontalAlignment="Left" Margin="18,8,0,0" TextWrapping="Wrap" Text="➥" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" RenderTransformOrigin="0.5,0.5" FontSize="18" MouseEnter="GPU_Back_MouseEnter" MouseLeave="GPU_Back_MouseLeave" MouseLeftButtonDown="GPU_Back_MouseLeftButtonDown" MouseLeftButtonUp="GPU_Back_MouseLeftButtonUp">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Rectangle x:Name="GPU_Back_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="18,28,764,0" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+            <Label x:Name="GPU_Search_label" Content="Search" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Foreground="#FF999999"/>
+            <TextBox x:Name="GPU_Search_bar" BorderThickness="0" HorizontalAlignment="Left" Height="18" Margin="113,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="GPU_Search_bar_TextChanged" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF7DF9FF" CaretBrush="White"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="1" Margin="110,32,0,0" VerticalAlignment="Top" Width="192"/>
+            <ScrollViewer HorizontalAlignment="Left" Height="267" Margin="110,45,0,0" VerticalAlignment="Top" Width="580">
+                <StackPanel x:Name="StackColumn" Height="282"/>
+            </ScrollViewer>
+            <TextBlock x:Name="Sort_Data_ID" HorizontalAlignment="Left" Margin="114,322,0,0" TextWrapping="Wrap" Text="Data ID" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Data_ID_MouseEnter" MouseLeave="Sort_Data_ID_MouseLeave" MouseLeftButtonDown="Sort_Data_ID_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_Data_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="114,341,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden"/>
+            <Rectangle x:Name="Sort_Name_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="240,341,487,0" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_Name" HorizontalAlignment="Left" Margin="240,322,0,0" TextWrapping="Wrap" Text="Sort By Name" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Name_MouseEnter" MouseLeave="Sort_Name_MouseLeave" MouseLeftButtonDown="Sort_Name_MouseLeftButtonDown"/>
+            <TextBlock x:Name="Sort_March" HorizontalAlignment="Left" Margin="397,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_March_MouseEnter" MouseLeave="Sort_March_MouseLeave" MouseLeftButtonDown="Sort_March_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_March_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="397,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_April" HorizontalAlignment="Left" Margin="447,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_April_MouseEnter" MouseLeave="Sort_April_MouseLeave" MouseLeftButtonDown="Sort_April_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_April_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="447,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_May" HorizontalAlignment="Left" Margin="495,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_May_MouseEnter" MouseLeave="Sort_May_MouseLeave" MouseLeftButtonDown="Sort_May_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_May_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="495,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_June" HorizontalAlignment="Left" Margin="540,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_June_MouseEnter" MouseLeave="Sort_June_MouseLeave" MouseLeftButtonDown="Sort_June_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_June_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="540,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_July" HorizontalAlignment="Left" Margin="585,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_July_MouseEnter" MouseLeave="Sort_July_MouseLeave" MouseLeftButtonDown="Sort_July_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_July_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="585,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+            <TextBlock x:Name="Sort_Change" HorizontalAlignment="Left" Margin="632,322,0,0" TextWrapping="Wrap" Text="Sort %" VerticalAlignment="Top" Foreground="White" TextDecorations="{x:Null}" MouseEnter="Sort_Change_MouseEnter" MouseLeave="Sort_Change_MouseLeave" MouseLeftButtonDown="Sort_Change_MouseLeftButtonDown"/>
+            <Rectangle x:Name="Sort_Change_Highlight" Fill="White" HorizontalAlignment="Left" Height="1" Margin="632,341,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+        </Grid>
+        <Grid x:Name="CPU_More_Info_Grid" HorizontalAlignment="Left" Height="352" Margin="0,34,0,0" VerticalAlignment="Top" Width="800" Background="#FF1B2838" Loaded="CPU_More_Info_Grid_Loaded" Visibility="Hidden">
+            <TextBlock x:Name="CPU_Back" HorizontalAlignment="Left" Margin="18,8,0,0" TextWrapping="Wrap" Text="➥" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" RenderTransformOrigin="0.5,0.5" FontSize="18" MouseEnter="CPU_Back_MouseEnter" MouseLeave="CPU_Back_MouseLeave" MouseLeftButtonDown="CPU_Back_MouseLeftButtonDown" MouseLeftButtonUp="CPU_Back_MouseLeftButtonUp">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Rectangle x:Name="CPU_Back_Highlight" Fill="White" HorizontalAlignment="Center" Height="1" Margin="18,28,764,0" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+            <Label x:Name="CPU_Search_label" Content="Search" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Foreground="#FF999999"/>
+            <TextBox x:Name="CPU_Search_bar" BorderThickness="0" HorizontalAlignment="Left" Height="18" Margin="113,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="CPU_Search_bar_TextChanged" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF7DF9FF" CaretBrush="White"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="1" Margin="110,32,0,0" VerticalAlignment="Top" Width="192"/>
+            <ScrollViewer HorizontalAlignment="Left" Height="267" Margin="167,45,0,0" VerticalAlignment="Top" Width="466">
+                <StackPanel x:Name="CPU_StackColumn" Height="282"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
